@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background: #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+    background: #ffffff;
+    color: #000;
+}
+
+.columns {
+    display: flex;
+    flex: 1;
+}
+
+.main {
+    flex: 1;
+    order: 1;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid;
+}
+
+.sidebar-first {
+    width: 20%;
+    background: #ffffff;
+    margin-left: 1%;
+    padding: 10px;
+    line-height: 1.5;
+    border: 1px solid;
+    order: 2;
+}
+
+.column {
+    background: #eaeaea;
+    width: 0;
+    transition: width 1s;
+}
+
+.column a {
+    transform: rotate(90deg);
+}
+
+.column a.turnedleft {
+    transform: rotate(270deg);
+}
+
+.column2 {
+    width: 10px;
+    background: linear-gradient(to right, #8a8a8a, #b4b4b4);
+    float: right;
+    height: 100%;
+}
+
+.column3 a {
+    margin-left: -18px;
+}
+
+.column4 {
+    width: 10px;
+    background: linear-gradient(to left, #8a8a8a, #b4b4b4);
+    float: left;
+    height: 100%;
+
+}
+
+.expanded {
+    width: 62px;
+}
+
+a {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 35px solid #5078c8;
+    position: absolute;
+    top: 50%;
+    margin-top: -35px;
+}
+
+div {
+    list-style-type: none;
+}
+
+li {
+    border: 1px double black;
+    margin-bottom: 3px;
+}
+
+button {
+    float: right;
+}
