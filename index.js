@@ -4,8 +4,7 @@ var model = {};
 var formatTime = d3.timeFormat("%M:%S:%L");
 
 function drawChart(data) {
-    var parentDiv = document.querySelector("main");
-    var svgWidth = parentDiv.clientWidth, svgHeight = parentDiv.clientHeight;
+    var svgWidth = 600, svgHeight = 400;
     var margin = {top: 20, right: 20, bottom: 30, left: 50};
     var width = svgWidth - margin.left - margin.right;
     var height = svgHeight - margin.top - margin.bottom;
@@ -14,8 +13,9 @@ function drawChart(data) {
     var convertedData = Object.values(data);
 
     var svg = d3.select('svg')
-        .attr("width", svgWidth)
-        .attr("height", svgHeight);
+        .attr("viewBox", "0 0 600 400")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .classed("svg-content", true);
 
     d3.selectAll('svg > g > *').remove(); // очистить график
 
@@ -29,11 +29,11 @@ function drawChart(data) {
         .range([height, 0]);
 
     var line = d3.line()
-        .x(function (d) {
-            return x(d.date)
+        .x(function (v) {
+            return x(v.date)
         })
-        .y(function (d) {
-            return y(+d.value)
+        .y(function (v) {
+            return y(+v.value)
         });
     x.domain(d3.extent(convertedData, function (d) {
         return d.date
@@ -53,7 +53,7 @@ function drawChart(data) {
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "0.71em")
-        .attr("text-anchor", "end")
+        .attr("text-anchor", "end");
 
     g.append("path")
         .data([convertedData])
@@ -141,5 +141,4 @@ window.onload = function () {
             updateAll(model);
         }
     });
-    window.addEventListener("resize", drawChart);
 };
